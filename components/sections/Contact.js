@@ -4,10 +4,7 @@ const Contact = () => (
     className="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 transition-colors duration-200"
   >
     <div className="max-w-4xl mx-auto text-center">
-      <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white mb-6">
-
-        
-      </h2>
+      <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white mb-6"></h2>
 
       <p className="text-xl text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
         Have a project in mind or want to discuss potential opportunities?
@@ -36,7 +33,7 @@ const Contact = () => (
         </a>
 
         <a
-          href="https://linkedin.com/in/yourprofile"
+          href="https://linkedin.com/in/khaledmohamedram"
           target="_blank"
           rel="noopener noreferrer"
           className="px-6 py-3 border border-indigo-600 dark:border-indigo-400 text-indigo-600 dark:text-indigo-400 rounded-lg hover:bg-indigo-50 dark:hover:bg-gray-800 transition-colors duration-200 flex items-center justify-center gap-2 w-full sm:w-auto"
