@@ -1,103 +1,85 @@
-import Image from "next/image";
+'use client'
+import { useEffect, useState } from 'react'
+import Head from 'next/head'
+import Header from '@/components/layout/Header'
+import Footer from '@/components/layout/Footer'
+import Hero from '@/components/sections/Hero'
+import Projects from '@/components/sections/Projects'
+import Skills from '@/components/sections/Skills'
+import Experience from '@/components/sections/Experience'
+import Contact from '@/components/sections/Contact'
+import FloatingElements from '@/components/ui/FloatingElements'
+import ThemeToggle from '@/components/layout/toggleDarkMode'
+import dynamic from 'next/dynamic'
+
+// Dynamic Import لللودر لتحسين الأداء
+const SunspotLoaderComponent = dynamic(
+  () => import('@/components/layout/SunspotLoaderComponent'),
+  { 
+    loading: () => <div className="fixed inset-0 bg-black z-50 flex justify-center items-center">Loading...</div>,
+    ssr: false 
+  }
+)
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [isLoading, setIsLoading] = useState(true)
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  useEffect(() => {
+    // محاكاة تحميل البيانات (استبدل هذا بالتحميل الفعلي)
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 3000) // 3 ثواني (يمكن تعديل المدة)
+
+    return () => clearTimeout(timer)
+  }, [])
+
+
+    const [progress, setProgress] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress(prev => (prev >= 100 ? 100 : prev + 10))
+    }, 300)
+
+    return () => clearInterval(interval)
+  }, [])
+
+
+
+
+
+  return (
+    <>
+      <ThemeToggle />
+
+   {isLoading ? (
+        <SunspotLoaderComponent />
+      ) : (
+        <>
+          <Head>
+            <title>Khaled Mohamed - Full Stack Developer</title>
+            <meta 
+              name="description" 
+              content="Full Stack Developer with expertise in React and Node.js" 
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+
+ 
+    
+
+
+          </Head>
+          <Header />
+          <main>
+            <Hero />
+            <Projects />
+            <Skills />
+            <Experience />
+            <Contact />
+          </main>
+          <Footer />
+          <FloatingElements />
+        </>
+      )}  
+    </>
+  )
 }

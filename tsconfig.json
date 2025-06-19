@@ -10,6 +10,10 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
+        "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
@@ -18,10 +22,9 @@
         "name": "next"
       }
     ],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/sections/Experience.js"],
+  "exclude": ["node_modules"],
+  
 }
